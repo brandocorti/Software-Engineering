@@ -1,0 +1,48 @@
+.testo-noleggia{
+  position: relative;
+  top: 385px;
+  display: flex;
+  font-family: Roboto, Arial;
+  font-weight: 500;
+  font-size: 28px;
+  justify-content: center;
+}
+.book-section{
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 390px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 40px;
+  justify-items: center;
+  align-items: center;
+}
+
+.container-copertina{
+  display: flex;
+}
+.copertina-book{
+  width: 100%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.archivio-button {
+  display: block;
+  margin: 20px auto;
+  font-family: Roboto, Arial;
+  font-size: 15px;
+  font-weight: 500;
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+}
+.archivio-button:hover{
+  cursor: pointer;
+}
+.archivio-button:active{
+  opacity: 0.5;
+}
+
+
+

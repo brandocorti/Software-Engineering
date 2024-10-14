@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Contatti EasyLib</title>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/logo-section.css">
+    <link rel="stylesheet" href="styles/background.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/contatti.css">
+  </head>
+
+  <body>
+    <!-- inizio header -->
+    <div class="header">
+      <div class="left-section">
+          La tua biblioteca a portata di click!!
+      </div>
+      <div class="middle-section"></div>
+      <div class="right-section">
+        <div class="icon-container">
+          <img class="icon-facebook" src="photos/facebook-icon.png">
+          <img class="icon-instagram" src="photos/instagram-icon.png">
+          <img class="icon-twitter" src="photos/twitter-icon.png">
+          <img class="icon-whatsapp" src="photos/whatsapp-icon.png">
+        </div>  
+      </div>
+    </div>
+
+  <div class="content-container">
+    <div class="logo-column">
+      <img class="logo" src="photos/logo.png">
+      <div class="nome-lib">
+        EasyLib
+      </div>
+    </div>
+    <div class="search-column">
+      <input id="searchBar" type="text" onkeypress="handle(event)" placeholder="Search" class="search-bar">
+    </div>
+      <div class="link-column">
+        <a href="homepage.html" class="home-link">Home</a>
+        <a href="servizi.html">Servizi</a>
+        <a href = "appuntamento.html">Appuntamento</a>
+        <a href = "impostazioni.html">Impostazioni</a>
+        <a href="contatti.html">Contatti </a>
+      </div>
+      <div class="login-column" id="loginColumn">
+        <button class="login-button" id="loginButton" onclick="login()">Login</button>
+      </div>
+      <div class="user-info" id="userInfo" style = "display: none">
+        <p class = "userFullName" id="userFullName"></p>
+        <p class="logout" id="logoutButton" onclick = "logout()">logout</p>
+      </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // Recupera i dati utente dalla localStorage
+  const loggedUserJSON = localStorage.getItem('loggedUser');
+  if (loggedUserJSON) {
+    const loggedUser = JSON.parse(loggedUserJSON);
+    // Nasconde il pulsante di login
+    document.getElementById('loginColumn').style.display = 'none';
+    // Mostra le informazioni dell'utente e il pulsante di logout
+    document.getElementById('userInfo').style.display = 'block';
+    document.getElementById('userFullName').textContent = loggedUser.nome + ' ' + loggedUser.cognome;
+  }
+});
+
+  var loginButton = document.getElementById("loginButton");
+  loginButton.addEventListener("click", function() {
+    window.location.href = "login.html";
+  });
+</script>
+<!-- fine header -->
+
+        <div class="contatti-container">
+          <p class="info-sede">
+            Sede EasyLib: Via Sommarive, 9, 38123, Povo, Trento (TN)
+          </p>
+          <div class="google-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2319.676324156551!2d11.147678813137862!3d46.06800280435299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478276eabbc1a9f5%3A0xffcd60f164c3b0d!2sPolo%20Scientifico%20e%20Tecnologico%20Fabio%20Ferrari%2C%20Polo%20B%2C%20Via%20Sommarive%2C%209%2C%2038123%20Povo%20TN!5e0!3m2!1sen!2sit!4v1709050230301!5m2!1sen!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          </iframe>
+          <p class="info-contatti">
+            Contatti
+          </p>
+          <p>
+            E-mail: helpdesk@easylib.com
+          </p>
+          <p>
+            Telefono: 04613458761
+          </p>
+        </div>
+
+        <script src="script.js"></script>
+  </body>
+</html>

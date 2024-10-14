@@ -1,0 +1,27 @@
+.contatti-container{
+  margin-top: 100px;
+  text-align: center;
+}
+
+p{
+  font-family: Roboto, Arial;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px;
+  margin-bottom: 7px;
+}
+.info-sede{
+  margin-bottom: 15px;
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.info-contatti{
+  font-family: Roboto, Arial;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px;
+  margin-bottom: 5px;
+  margin-bottom: 7px;
+}

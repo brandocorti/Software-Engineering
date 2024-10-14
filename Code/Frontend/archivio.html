@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Archivio EasyLib</title>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/logo-section.css">
+    <link rel="stylesheet" href="styles/background.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/archivio.css">
+  </head>
+
+  <body>
+    <!-- inizio header -->
+    <div class="header">
+      <div class="left-section">
+          La tua biblioteca a portata di click!!
+      </div>
+      <div class="middle-section"></div>
+      <div class="right-section">
+        <div class="icon-container">
+          <img class="icon-facebook" src="photos/facebook-icon.png">
+          <img class="icon-instagram" src="photos/instagram-icon.png">
+          <img class="icon-twitter" src="photos/twitter-icon.png">
+          <img class="icon-whatsapp" src="photos/whatsapp-icon.png">
+        </div>  
+      </div>
+    </div>
+
+  <div class="content-container">
+    <div class="logo-column">
+      <img class="logo" src="photos/logo.png">
+      <div class="nome-lib">
+        EasyLib
+      </div>
+    </div>
+    <div class="search-column">
+      <input id="searchBar" type="text" onkeypress="handle(event)" placeholder="Search" class="search-bar">
+    </div>
+      <div class="link-column">
+        <a href="homepage.html" class="home-link">Home</a>
+        <a href="servizi.html">Servizi</a>
+        <a href = "appuntamento.html">Appuntamento</a>
+        <a href = "impostazioni.html">Impostazioni</a>
+        <a href="contatti.html">Contatti </a>
+      </div>
+      <div class="login-column" id="loginColumn">
+        <button class="login-button" id="loginButton" onclick="login()">Login</button>
+      </div>
+      <div class="user-info" id="userInfo" style = "display: none">
+        <p class = "userFullName" id="userFullName"></p>
+        <p class="logout" id="logoutButton" onclick = "logout()">logout</p>
+      </div>
+    </div>
+</div>
+<!-- fine header -->
+  
+    <!-- inizio sidebar -->
+    <div class="sidebar">
+      <div class="filtro">
+        <h3>Autore</h3>
+        <div class="scelta">
+          <input type="radio" id="autore1" name="filtro" value="Kafka">
+          <label for="autore1">Kafka</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore2" name="filtro" value="Calvino">
+          <label for="autore2">Calvino</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore3" name="filtro" value="Pirandello">
+          <label for="autore3">Pirandello</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore4" name="filtro" value="Doyle">
+          <label for="autore4">Doyle</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore5" name="filtro" value="Christie">
+          <label for="autore5">Christie</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore6" name="filtro" value="Eco">
+          <label for="autore6">Eco</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore7" name="filtro" value="Baricco">
+          <label for="autore7">Baricco</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore8" name="filtro" value="Macchiavelli">
+          <label for="autore8">Macchiavelli</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore9" name="filtro" value="Orwell">
+          <label for="autore9">Orwell</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore10" name="filtro" value="De Cervante">
+          <label for="autore10">De Cervantes</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore11" name="filtro" value="Shakespeare">
+          <label for="autore11">Shakespeare</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="autore12" name="filtro" value="Herbert">
+          <label for="autore12">Herbert</label>
+        </div>
+        <h3>Genere</h3>
+        <div class="scelta">
+          <input type="radio" id="genere1" name="filtro" value="Romanzo">
+          <label for="genere1">Romanzo</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="genere2" name="filtro" value="Fantascienza">
+          <label for="genere2">Fantascienza</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="genere3" name="filtro" value="Tragedia">
+          <label for="genere3">Tragedia</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="genere4" name="filtro" value="Giallo">
+          <label for="genere4">Giallo</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="genere5" name="filtro" value="Storia">
+          <label for="genere5">Storia</label>
+        </div>
+        <div class="scelta">
+          <input type="radio" id="genere6" name="filtro" value="Satira">
+          <label for="genere6">Satira</label>
+        </div>
+      </div>
+      <button class="conferma-filtri" id = "confermaFiltri" onclick="filtri()">Conferma Filtri</button> 
+    </div>
+    <!-- fine sidebar -->
+  
+    <!-- inizio bookList -->
+    <div id="bookList">
+      <!-- start item -->
+      <div class="book-section">
+        <div class="book-container">
+          <div class="copertina-libro-container">
+            <p class="titolo-libro">Finchè non aprirai quel libro</p>
+            <img src="photos/copertina-1.jpeg" class="copertina-libro">
+          </div>
+          <div class="info-libro">
+            <p class="autore"><strong>Michiko Aoyama</strong></p>
+            <p class="genere">Genere: Giallo</p>
+            <p class="disponibilità"><span class="cerchio-verde"></span> Disponibile</p>
+            <div id="loggedUser1" style = "display: none;">
+              <button class="bottone-prenota" id="prenotaButton3">
+                Prenota e ritira
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end item -->
+  
+      <!-- start item -->
+      <div class="book-section">
+        <div class="book-container">
+          <div class="copertina-libro-container">
+            <p class="titolo-libro">Lo scialle di Marie Dudon e altri racconti</p>
+            <img src="photos/copertina-6.jpeg" class="copertina-libro">
+          </div>
+          <div class="info-libro">
+            <p class="autore"><strong>Georges Simenon</strong></p>
+            <p class="genere">Genere: Giallo</p>
+            <p class="disponibilità"><span class="cerchio-verde"></span> Disponibile</p>
+            <div id="loggedUser2" style = "display: none;">
+              <button class="bottone-prenota" id="prenotaButton3">
+                Prenota e ritira
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end item -->
+  
+      <!-- start item -->
+      <div class="book-section">
+        <div class="book-container">
+          <div class="copertina-libro-container">
+            <p class="titolo-libro">Mala feminista</p>
+            <img src="photos/copertina-7.jpeg" class="copertina-libro">
+          </div>
+          <div class="info-libro">
+            <p class="autore"><strong>Roxane Gay</strong></p>
+            <p class="genere">Genere: Giallo</p>
+            <p class="disponibilità"><span class="cerchio-verde"></span> Disponibile</p>
+            <div id="loggedUser3" style = "display: none;">
+              <button class="bottone-prenota" id="prenotaButton3">
+                Prenota e ritira
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end item -->
+  
+      <!-- start item -->
+      <div class="book-section">
+        <div class="book-container">
+          <div class="copertina-libro-container">
+            <p class="titolo-libro">Biglietto blu</p>
+            <img src="photos/copertina-4.jpeg" class="copertina-libro">
+          </div>
+          <div class="info-libro">
+            <p class="autore"><strong>Sophie Mackintosh</strong></p>
+            <p class="genere">Genere: Giallo</p>
+            <p class="disponibilità"><span class="cerchio-verde"></span> Disponibile</p>
+            <div id="loggedUser4" style = "display: none;">
+              <button class="bottone-prenota" id="prenotaButton3">
+                Prenota e ritira
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- end item -->
+    <!-- fine bookList -->
+  
+    <script>
+      // Seleziona tutti i bottoni di prenotazione
+      var prenotaButtons = document.querySelectorAll(".bottone-prenota");
+      // Aggiungi un evento di click a ciascun bottone di prenotazione
+      prenotaButtons.forEach(function(button, index) {
+        button.addEventListener("click", function() {
+          // Genera l'URL in base all'indice del pulsante e reindirizza l'utente
+          window.location.href = "/appuntamentoLibro.html?id=" + (index + 1);
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Recupera i dati utente dalla localStorage
+        const loggedUserJSON = localStorage.getItem('loggedUser');
+        if (loggedUserJSON) {
+          const loggedUser = JSON.parse(loggedUserJSON);
+          // Nasconde il pulsante di login
+          document.getElementById('loginColumn').style.display = 'none';
+          // Mostra le informazioni dell'utente e il pulsante di logout
+          document.getElementById('userInfo').style.display = 'block';
+          document.getElementById('userFullName').textContent = loggedUser.nome + ' ' + loggedUser.cognome;
+          document.getElementById('loggedUser1').style.display = 'block';
+          document.getElementById('loggedUser2').style.display = 'block';
+          document.getElementById('loggedUser3').style.display = 'block';
+          document.getElementById('loggedUser4').style.display = 'block';
+        }
+
+        fetchBooks();
+      });
+
+      var loginButton = document.getElementById("loginButton");
+      loginButton.addEventListener("click", function() {
+        window.location.href = "login.html";
+      })
+    </script>
+
+    <script src = "script.js"></script>
+  </body>
+</html>

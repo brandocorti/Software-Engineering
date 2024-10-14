@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>Impostazioni EasyLib</title>  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/logo-section.css">
+  <link rel="stylesheet" href="styles/background.css">
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/book-section.css">
+  <link rel="stylesheet" href="styles/impostazioni.css">
+  
+</head>
+<body>
+  <!-- inizio header -->
+      <div class="header">
+        <div class="left-section">
+            La tua biblioteca a portata di click!!
+        </div>
+        <div class="middle-section"></div>
+        <div class="right-section">
+          <div class="icon-container">
+            <img class="icon-facebook" src="photos/facebook-icon.png">
+            <img class="icon-instagram" src="photos/instagram-icon.png">
+            <img class="icon-twitter" src="photos/twitter-icon.png">
+            <img class="icon-whatsapp" src="photos/whatsapp-icon.png">
+          </div>  
+        </div>
+      </div>
+  
+      <div class="content-container">
+        <div class="logo-column">
+          <img class="logo" src="photos/logo.png">
+          <div class="nome-lib">
+            EasyLib
+          </div>
+        </div>
+        <div class="search-column">
+          <input id="searchBar" type="text" onkeypress="handle(event)" placeholder="Search" class="search-bar">
+        </div>
+        <div class="link-column">
+          <a href="homepage.html" class="home-link">Home</a>
+          <a href="servizi.html">Servizi</a>
+          <a href="appuntamento.html">Appuntamento</a>
+          <a href = "impostazioni.html">Impostazioni</a>
+          <a href="contatti.html">Contatti </a>
+        </div>
+        <div class="login-column" id="loginColumn">
+          <button class="login-button" id="loginButton" onclick="login()">Login</button>
+        </div>
+        <div class="user-info" id="userInfo" style = "display: none">
+          <p class = "userFullName" id="userFullName"></p>
+          <p class="logout" id="logoutButton" onclick = "logout()">logout</p>
+        </div>
+      </div>
+  
+  
+  <!-- fine header -->
+      <div class="sidebar">
+        <div class="elemento" id="lingua">Lingua</div>
+        <div id="loggedUser" style = "display: none">
+          <div class="elemento" id="noleggi">I miei noleggi</div>
+          <div class="elemento" id="appuntamenti">I miei appuntamenti</div>
+          <div class="elemento" id="pagamenti">Pagamenti</div>
+        </div>
+      </div>
+  
+      <div class = 'content'>
+        <div id="lingua-content" style="display: none">
+          <h2>Lingua</h2>
+          <p>Scegli la tua lingua preferita:</p>
+        <center>
+          <div class="switch">
+            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox">
+            <label for="language-toggle"></label>
+            <span class="on">IT</span>
+            <span class="off">EN</span>
+            <button class = 'conferma-lingua'>Conferma</button>
+          </div>
+        </center>
+        </div>
+        <div id="noleggi-content" style="display: none">
+          <!-- Contenuto della sezione I miei noleggi -->
+          <h2>I miei noleggi</h2>
+          <p>Visualizza i tuoi noleggi attivi.</p>
+          <div id="bookList"></div>
+        </div>
+        <div id="appuntamenti-content" style="display: none">
+          <!-- Contenuto della sezione I miei appuntamenti -->
+          <h2>I miei appuntamenti</h2>
+          <p>Visualizza i tuoi appuntamenti.</p>
+          <div id="appuntamentiList">
+          </div>
+        </div>
+        <div id="pagamenti-content">
+          <!-- Contenuto della sezione Pagamenti -->
+          <h2>Pagamenti</h2>
+          <p>Effettua pagamenti e gestisci le tue transazioni.</p>
+          <div id="pagamentiList">
+          </div>
+      </div>
+      
+      </div>
+  
+      <script> 
+          var loginButton = document.getElementById("loginButton");
+          loginButton.addEventListener("click", function() {
+          window.location.href = "login.html";
+        })
+
+        document.addEventListener('DOMContentLoaded', function() {
+        // Recupera i dati utente dalla localStorage
+        const loggedUserJSON = localStorage.getItem('loggedUser');
+        if (loggedUserJSON) {
+          const loggedUser = JSON.parse(loggedUserJSON);
+          // Nasconde il pulsante di login
+          document.getElementById('loginColumn').style.display = 'none';
+          // Mostra le informazioni dell'utentem, il pulsante di logout e le altre sezioni
+          document.getElementById('userInfo').style.display = 'block';
+          document.getElementById('userFullName').textContent = loggedUser.nome + ' ' + loggedUser.cognome;
+          document.getElementById('loggedUser').style.display = 'block';
+        }
+      });
+
+      // Funzione per aprire la sezione corretta quando viene premuto un elemento della barra laterale
+        function apriSezione(sezione) {
+              // Nascondi tutte le sezioni
+              var sezioni = document.querySelectorAll('.content > div');
+              sezioni.forEach(function(sezione) {
+                sezione.style.display = 'none';
+              });
+              // Mostra solo la sezione corretta
+              var sezioneCorretta = document.getElementById(sezione);
+              if (sezioneCorretta) {
+                sezioneCorretta.style.display = 'block';
+              }
+            }
+        // Ascoltatore di eventi per ogni elemento della barra laterale
+        var lingua = document.getElementById("lingua");
+        var noleggi = document.getElementById("noleggi");
+        var appuntamenti = document.getElementById("appuntamenti");
+        var pagamenti = document.getElementById("pagamenti");
+
+        lingua.addEventListener("click", function() {
+          apriSezione("lingua-content");
+        });
+        noleggi.addEventListener("click", function() {
+          apriSezione("noleggi-content");
+          ottieniNoleggi();
+        });
+        appuntamenti.addEventListener("click", function() {
+          apriSezione("appuntamenti-content");
+          fetchAppuntamenti();
+        });
+        pagamenti.addEventListener("click", function() {
+          apriSezione("pagamenti-content");
+          fetchMulta()
+        });
+
+        // Inizialmente, nascondi tutte le sezioni
+        var sezioni = document.querySelectorAll('.content > div');
+        sezioni.forEach(function(sezione) {
+          sezione.style.display = 'none';
+        });
+
+        // Mostra la sezione lingua per default
+        apriSezione("lingua-content");
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // Recupera i dati utente dalla localStorage
+        const loggedUserJSON = localStorage.getItem('loggedUser');
+        if (loggedUserJSON) {
+          const loggedUser = JSON.parse(loggedUserJSON);
+          // Nasconde il pulsante di login
+          document.getElementById('loginColumn').style.display = 'none';
+          // Mostra le informazioni dell'utente e il pulsante di logout
+          document.getElementById('userInfo').style.display = 'block';
+          document.getElementById('userFullName').textContent = loggedUser.nome + ' ' + loggedUser.cognome;
+          document.getElementById('loggedUser').style.display = 'block';
+        }
+      });
+
+      var prenotaButtons = document.querySelectorAll(".bottone-cancella");
+      // Aggiungi un evento di click a ciascun bottone
+      prenotaButtons.forEach(function(button, index) {
+        button.addEventListener("click", function() {
+          // Genera l'URL in base all'indice del pulsante e reindirizza l'utente
+          window.location.href = "/appuntamentoLibro.html"
+        });
+      });
+      </script>
+
+      <script src="script.js"></script>
+  </body>
+</html>
+

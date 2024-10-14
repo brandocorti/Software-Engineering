@@ -1,0 +1,27 @@
+.background-container{
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background-image: url("../photos/background.jpeg");
+  background-size: contain;
+  background-position: center;
+  background-color: black;
+}
+.green-background{
+  margin: 0;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(0, 177, 88, 0.5);
+}
+.didascalia{
+  color: white;
+  font-family: Roboto, Arial;
+  font-weight: 500;
+  font-size: 28px;
+  padding-left: 15px;
+}

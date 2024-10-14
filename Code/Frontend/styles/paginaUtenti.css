@@ -1,0 +1,59 @@
+.utenti {
+  margin: 100px 40px 0px 40px;
+}
+
+.utenti ul{
+  list-style: none;
+  padding: 0;
+}
+
+.utenti li{
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.cognome, .nome, .mail {
+  color: #555;
+  margin-left: 5px;
+}
+
+.conferma-reso {
+  padding: 5px 10px;
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  transform: translateY(-50%);
+  border-color: #008fd6;
+  color: #008fd6;
+  border: 2px solid #006ca1;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.conferma-reso:active{
+  opacity: 0.5;
+}
+
+.bottone-multa{
+  padding: 5px 10px;
+  position: absolute;
+  right: 165px;
+  bottom: 16;
+  transform: translateY(-50%);
+  border-color: #008fd6;
+  color: #008fd6;
+  border: 2px solid #006ca1;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.bottone-multa:active{
+  opacity: 0.5;
+}

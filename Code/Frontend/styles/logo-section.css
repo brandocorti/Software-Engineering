@@ -1,0 +1,74 @@
+.content-container{
+  display: grid;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  grid-template-columns: 1fr 1.7fr 3fr 0.45fr;
+  width: 100%;
+  align-items: center;
+  padding: 5px 0px;
+}
+.logo-column{
+  display: flex;
+  flex-wrap: nowrap;
+}
+.logo{
+  margin-left: 10px;
+  height: 30px;
+  margin-right: 4px;
+}
+.nome-lib{
+  margin-top: 2px;
+  font-family: Kalam, Arial;
+  font-weight: 400;
+}
+
+.search-column{
+  display: flex;
+  justify-items: center;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.search-bar{
+  width: 120px;
+  border-radius: 10px;
+  border-color: black;
+}
+
+.link-column{
+  justify-items: center;
+}
+
+.login-button{
+  font-family: Roboto, Arial;
+  font-weight: 500;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(0, 177, 88);
+  border: none;
+  padding: 5px 8px;
+}
+.login-button:hover{
+  cursor: pointer;
+}
+.login-button:active{
+  opacity: 0.5;
+}
+
+.userFullName{
+  margin : 0px;
+  font-size: 12px;
+}
+
+.logout{
+  font-size: 10px;
+  margin: 0px;
+  text-decoration: underline;
+}
+.logout:hover{
+  cursor: pointer;
+}
+.logout:active{
+  opacity: 0.5;
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Appuntamento EasyLib</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/logo-section.css">
+    <link rel="stylesheet" href="styles/background.css">
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/appuntamento.css">
+
+  </head>
+
+  <body>
+   <!-- inizio header -->
+   <div class="header">
+    <div class="left-section">
+        La tua biblioteca a portata di click!!
+    </div>
+    <div class="middle-section"></div>
+    <div class="right-section">
+      <div class="icon-container">
+        <img class="icon-facebook" src="photos/facebook-icon.png">
+        <img class="icon-instagram" src="photos/instagram-icon.png">
+        <img class="icon-twitter" src="photos/twitter-icon.png">
+        <img class="icon-whatsapp" src="photos/whatsapp-icon.png">
+      </div>  
+    </div>
+  </div>
+
+<div class="content-container">
+  <div class="logo-column">
+    <img class="logo" src="photos/logo.png">
+    <div class="nome-lib">
+      EasyLib
+    </div>
+  </div>
+  <div class="search-column">
+    <input id="searchBar" type="text" onkeypress="handle(event)" placeholder="Search" class="search-bar">
+  </div>
+    <div class="link-column">
+      <a href="homepage.html" class="home-link">Home</a>
+      <a href="servizi.html">Servizi</a>
+      <a href = "appuntamento.html">Appuntamento</a>
+      <a href = "impostazioni.html">Impostazioni</a>
+      <a href="contatti.html">Contatti </a>
+    </div>
+    <div class="login-column" id="loginColumn">
+      <button class="login-button" id="loginButton" onclick="login()">Login</button>
+    </div>
+    <div class="user-info" id="userInfo" style = "display: none">
+      <p class = "userFullName" id="userFullName"></p>
+      <p class="logout" id="logoutButton" onclick = "logout()">logout</p>
+    </div>
+  </div>
+</div>
+<!-- fine header -->
+
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <form class="formAppuntamento" id="formAppuntamento">
+          <div class="formbold-mb-5">
+            <label for="email" class="formbold-form-label"> Indirizzo Mail </label>
+            <input
+              type="email"
+              name="email"
+              id="emailAppuntamento"
+              placeholder="e-mail"
+              class="formbold-form-input"
+            />
+          </div>
+          <div class="flex flex-wrap formbold--mx-3">
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5 w-full">
+                <label for="date" class="formbold-form-label"> Data </label>
+                <input
+                  type="date"
+                  name="date"
+                  id="dateAppuntamento"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+            <div class="w-full sm:w-half formbold-px-3">
+              <div class="formbold-mb-5">
+                <label for="time" class="formbold-form-label"> Orario </label>
+                <input
+                  type="time"
+                  name="time"
+                  id="timeAppuntamento"
+                  class="formbold-form-input"
+                />
+              </div>
+            </div>
+            <div class="tipo-appuntamento">
+              <p class="motivo-appuntamento">Motivo dell'appuntamento:</p>
+              <div class="scelta">
+                <input type="radio" name="fav_language" value="Restituire un libro" class="radio">
+                <label for="Restituire un libro">Restituire un libro</label><br>
+              </div>
+              <div class="scelta">
+                <input type="radio" name="fav_language" value="Donare un libro" class="radio">
+                <label for="Donare un libro">Donare un libro</label>
+              </div>  
+            </div>
+          </div>
+          <div>
+            <button class="formbold-btn">Prenota il tuo appuntamento</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Recupera i dati utente dalla localStorage
+        const loggedUserJSON = localStorage.getItem('loggedUser');
+        if (loggedUserJSON) {
+          const loggedUser = JSON.parse(loggedUserJSON);
+          // Nasconde il pulsante di login
+          document.getElementById('loginColumn').style.display = 'none';
+          // Mostra le informazioni dell'utente e il pulsante di logout
+          document.getElementById('userInfo').style.display = 'block';
+          document.getElementById('userFullName').textContent = loggedUser.nome + ' ' + loggedUser.cognome;
+        }
+    });
+      
+      document.getElementById("formAppuntamento").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+        appuntamento();
+      });
+
+      var loginButton = document.getElementById("loginButton");
+      loginButton.addEventListener("click", function() {
+        window.location.href = "login.html";
+      });
+    </script>
+    
+    <script src="script.js"></script>
+
+  </body>
+  
+</html>
+
